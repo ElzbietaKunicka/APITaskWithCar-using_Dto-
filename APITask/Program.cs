@@ -27,7 +27,6 @@ namespace APITask
             app.UseHttpsRedirection();
             app.UseAuthorization();
 
-
             app.MapControllers();
 
             app.Run();

@@ -20,6 +20,7 @@ namespace APITask.Controllers
         {
             return _carsList.GetALLCars();
         }
+
         [HttpGet]
         [Route("Color")]
         public List<Car> GetCarsByColor( [FromQuery]string color)
@@ -32,11 +33,13 @@ namespace APITask.Controllers
         {
             _carsList.AddNewCarToList(carToAdd);
         }
+
         [HttpPut]
         public void UpdateCar([FromQuery] int id, [FromBody] CarDto car)
         {
-            _carsList.UpdateCar(id, car.Color, car.Brand);
+            _carsList.UpdateCarById(id, car.Color, car.Brand);
         }
+
         [HttpDelete]
         public void Delete(int id)
         {

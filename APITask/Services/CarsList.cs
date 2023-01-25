@@ -34,7 +34,7 @@ namespace APITask.Services
             
         }
 
-        public void UpdateCar(int id, string color, string brand)
+        public void UpdateCarById(int id, string color, string brand)
         {
             var existingCar = _cars.FirstOrDefault(i => i.Id == id);
             existingCar.Color = color;
