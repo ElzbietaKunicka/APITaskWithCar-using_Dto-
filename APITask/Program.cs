@@ -1,4 +1,5 @@
 using APITask.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace APITask
 {
@@ -14,7 +15,12 @@ namespace APITask
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddSingleton<ICarsList, CarsList>();
+
+            builder.Services.AddDbContext<CarsListDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("database")));
+
+            //builder.Services.AddSingleton<ICarsList, CarsList>();
+            builder.Services.AddScoped<ICarsList, CarsListDbRepository>();
 
             var app = builder.Build();
 
